@@ -5,7 +5,7 @@
 		<title>
 			MIDI-Drummer-Tiny — Quick-start
 		</title>
-		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680841991" rel="stylesheet" />
+		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680842280" rel="stylesheet" />
 		<link href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css" rel="stylesheet" />
 	</head>
 	<body class="page from-pod" id="top">
@@ -66,18 +66,177 @@
 					</span>
 				</h2>
 				<p>
-					version 0.4202
+					version 0.4203
 				</p>
 				<h2>
-					<span id="Tbd...">
-						Tbd...
+					<span id="Import_the_Module">
+						Import the Module
+					</span>
+				</h2>
+				<pre><code>  use MIDI::Drummer::Tiny;</code></pre>
+				<h2>
+					<span id="Object_Instantiation">
+						Object Instantiation
 					</span>
 				</h2>
 				<h3>
-					<span id="TBD...">
-						TBD...
+					<span id="Use_the_defaults">
+						Use the defaults
 					</span>
 				</h3>
+				<pre><code>  my $d = MIDI::Drummer::Tiny-&gt;new;</code></pre>
+				<h3>
+					<span id="Attribute_configuration">
+						Attribute configuration
+					</span>
+				</h3>
+				<pre><code>  my $d = MIDI::Drummer::Tiny-&gt;new(
+      file       =&gt; 'drums.mid',
+      bpm        =&gt; 120,
+      channel    =&gt; 10,
+      volume     =&gt; 120,
+      signature  =&gt; '5/4', # OR:
+      #beats     =&gt; 5,
+      #divisions =&gt; 4,
+      bars       =&gt; 8,
+      reverb     =&gt; 0,
+      kick       =&gt; 36, # Override default patch
+      snare      =&gt; 40, # "
+      verbose    =&gt; 1,
+  );</code></pre>
+				<h2>
+					<span id="Drum_Set_Components">
+						Drum Set Components
+					</span>
+				</h2>
+				<h3>
+					<span id="Kick_and_snare-like_things">
+						Kick and snare-like things
+					</span>
+				</h3>
+				<p>
+					acoustic_bass, electric_bass ("kick")
+				</p>
+				<p>
+					acoustic_snare, electric_snare, side_stick, clap
+				</p>
+				<h3>
+					<span id="Cymbals">
+						Cymbals
+					</span>
+				</h3>
+				<p>
+					open_hh, closed_hh, pedal_hh
+				</p>
+				<p>
+					crash1, crash2, splash, china
+				</p>
+				<p>
+					ride1, ride2, ride_bell
+				</p>
+				<h3>
+					<span id="Toms">
+						Toms
+					</span>
+				</h3>
+				<p>
+					hi_tom, hi_mid_tom, low_mid_tom, low_tom, hi_floor_tom, low_floor_tom
+				</p>
+				<h3>
+					<span id="Miscelaneous">
+						Miscelaneous
+					</span>
+				</h3>
+				<p>
+					click, bell (metronome), tambourine, cowbell, vibraslap, etc.
+				</p>
+				<h2>
+					<span id="Handy_Duration_Aliases">
+						Handy Duration Aliases
+					</span>
+				</h2>
+				<p>
+					whole, triplet_whole, dotted_whole, double_dotted_whole
+				</p>
+				<p>
+					half, triplet_half, dotted_half, double_dotted_half
+				</p>
+				<p>
+					quarter, triplet_quarter, dotted_quarter, double_dotted_quarter
+				</p>
+				<p>
+					eighth, triplet_eighth, dotted_eighth, double_dotted_eighth
+				</p>
+				<p>
+					etc. up to 128th notes
+				</p>
+				<h2>
+					<span id="Basic_Beats">
+						Basic Beats
+					</span>
+				</h2>
+				<h3>
+					<span id="Rock">
+						Rock
+					</span>
+				</h3>
+				<pre><code>  $d-&gt;metronome44;
+  # OR
+  $d-&gt;metronome44($d-&gt;bars, 1);</code></pre>
+				<p>
+					That's it!
+				</p>
+				<h3>
+					<span id="Swing">
+						Swing
+					</span>
+				</h3>
+				<pre><code>  $d-&gt;metronome44swing;</code></pre>
+				<p>
+					That's it!
+				</p>
+				<h3>
+					<span id="Viennese_Waltz">
+						Viennese Waltz
+					</span>
+				</h3>
+				<pre><code>  for my $n (1 .. $d-&gt;bars) {
+      $d-&gt;note($d-&gt;quarter, $d-&gt;ride1, $d-&gt;kick);
+      $d-&gt;note($d-&gt;quarter, $d-&gt;ride1, $d-&gt;snare);
+      $d-&gt;note($d-&gt;quarter, $d-&gt;ride1, $d-&gt;snare);
+  }</code></pre>
+				<p>
+					In 3/4 time
+				</p>
+				<h3>
+					<span id="Disco">
+						Disco
+					</span>
+				</h3>
+				<pre><code>  my $i = 0;
+
+  for my $n ( 0 .. $d-&gt;bars - 1 ) {
+      $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh, $d-&gt;kick );
+      $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh );
+      $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh );
+      $d-&gt;note( $d-&gt;sixteenth, $d-&gt;open_hh );
+      $d-&gt;note( $d-&gt;sixteenth, $d-&gt;pedal_hh, $d-&gt;kick, $d-&gt;snare );
+      $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh );
+      $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh );
+      $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh );
+  }</code></pre>
+				<p>
+					This beat is extra-cheesy.
+				</p>
+				<h2>
+					<span id="And_Finally...">
+						And Finally...
+					</span>
+				</h2>
+				<p>
+					We need to write-out the score to a MIDI file.
+				</p>
+				<pre><code>  $d-&gt;write;</code></pre>
 				<h2>
 					<span id="Copyright_and_License">
 						Copyright and License
