@@ -5,7 +5,7 @@
 		<title>
 			MIDI-Drummer-Tiny: Glorified metronome
 		</title>
-		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680905844" rel="stylesheet" />
+		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680906175" rel="stylesheet" />
 		<link href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css" rel="stylesheet" />
 	</head>
 	<body class="homepage from-markdown" id="top">
@@ -170,8 +170,11 @@
 
 my $d = MIDI::Drummer::Tiny-&gt;new;
 
-$d-&gt;note($d-&gt;quarter, $d-&gt;open_hh, $_ % 2 ? $d-&gt;kick : $d-&gt;snare)
-    for 1 .. $d-&gt;beats * $d-&gt;bars;
+$d-&gt;note(
+    $d-&gt;quarter,
+    $d-&gt;open_hh,
+    $_ % 2 ? $d-&gt;kick : $d-&gt;snare
+) for 1 .. $d-&gt;beats * $d-&gt;bars;
 
 $d-&gt;write;</code></pre>
 							</div>
