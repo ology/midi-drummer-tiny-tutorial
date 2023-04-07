@@ -5,7 +5,7 @@
 		<title>
 			MIDI-Drummer-Tiny — Basics
 		</title>
-		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680846217" rel="stylesheet" />
+		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680853566" rel="stylesheet" />
 		<link href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css" rel="stylesheet" />
 	</head>
 	<body class="page from-pod" id="top">
@@ -66,7 +66,7 @@
 					</span>
 				</h2>
 				<p>
-					version 0.4204
+					version 0.4205
 				</p>
 				<h2>
 					<span id="Methods_and_Techniques">
@@ -92,13 +92,13 @@
 					</span>
 				</h3>
 				<p>
-					Add a single quarter-note with both the closed hihat and the bass drum, to the score:
-				</p>
-				<pre><code>  $d-&gt;note($d-&gt;quarter, $d-&gt;closed_hh, $d-&gt;kick);</code></pre>
-				<p>
 					Rest for a whole note:
 				</p>
 				<pre><code>  $d-&gt;rest($d-&gt;whole);</code></pre>
+				<p>
+					Add a single quarter-note with both the closed hihat and the bass drum, to the score:
+				</p>
+				<pre><code>  $d-&gt;note($d-&gt;quarter, $d-&gt;closed_hh, $d-&gt;kick);</code></pre>
 				<p>
 					Add an accented snare to the score:
 				</p>
@@ -160,11 +160,7 @@
 				</p>
 				<pre><code>  $d-&gt;crescendo_roll([50, 127], $d-&gt;eighth, $d-&gt;thirtysecond);</code></pre>
 				<p>
-					Roll the snare from a volume of 50
-					<b>
-						up
-					</b>
-					to 127 with a curve (as illustrated in the main module's documentation):
+					Roll the snare from a volume of 50 up to 127 with a curve (as illustrated in the main module's documentation):
 				</p>
 				<pre><code>  $d-&gt;crescendo_roll([50, 127, 1], $d-&gt;eighth, $d-&gt;thirtysecond);</code></pre>
 				<p>

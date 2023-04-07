@@ -5,7 +5,7 @@
 		<title>
 			MIDI-Drummer-Tiny — Advanced
 		</title>
-		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680846217" rel="stylesheet" />
+		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680853566" rel="stylesheet" />
 		<link href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css" rel="stylesheet" />
 	</head>
 	<body class="page from-pod" id="top">
@@ -66,18 +66,283 @@
 					</span>
 				</h2>
 				<p>
-					version 0.4204
+					version 0.4205
 				</p>
 				<h2>
-					<span id="Tbd...">
-						Tbd...
+					<span id="Advanced_Grooves">
+						Advanced Grooves
 					</span>
 				</h2>
 				<h3>
-					<span id="TBD...">
-						TBD...
+					<span id="Cold_Sweat_(Clyde_Stubblefield)">
+						Cold Sweat (Clyde Stubblefield)
 					</span>
 				</h3>
+				<pre><code>  my $accent = 30;
+
+  for my $n (1 .. $d-&gt;bars) {
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh, $d-&gt;kick);
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh);
+
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh, $d-&gt;snare);
+      $d-&gt;note($d-&gt;sixteenth, $d-&gt;closed_hh);
+      $d-&gt;accent_note($accent, $d-&gt;sixteenth, $d-&gt;snare);
+
+      $d-&gt;note($d-&gt;sixteenth, $d-&gt;closed_hh);
+      $d-&gt;accent_note($accent, $d-&gt;sixteenth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;eighth, $d-&gt;open_hh, $d-&gt;kick);
+
+      $d-&gt;note($d-&gt;eighth, $d-&gt;pedal_hh);
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh, $d-&gt;snare);
+
+      $d-&gt;note($d-&gt;sixteenth, $d-&gt;closed_hh);
+      $d-&gt;accent_note($accent, $d-&gt;sixteenth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh, $d-&gt;kick);
+
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh, $d-&gt;snare);
+      $d-&gt;note($d-&gt;sixteenth, $d-&gt;closed_hh);
+      $d-&gt;accent_note($accent, $d-&gt;sixteenth, $d-&gt;snare);
+
+      $d-&gt;note($d-&gt;sixteenth, $d-&gt;closed_hh);
+      $d-&gt;accent_note($accent, $d-&gt;sixteenth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh, $d-&gt;kick);
+
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh, $d-&gt;snare);
+      $d-&gt;note($d-&gt;eighth, $d-&gt;closed_hh);
+  }</code></pre>
+				<h3>
+					<span id="Fool_in_the_Rain_(John_Bonham)">
+						Fool in the Rain (John Bonham)
+					</span>
+				</h3>
+				<pre><code>  my ($min, $max) = (30, 127);
+
+  for my $n (1 .. $d-&gt;bars) {
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh, $d-&gt;kick);
+      $d-&gt;rest($d-&gt;triplet_eighth);
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;open_hh, $d-&gt;kick);
+
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;pedal_hh);
+      $d-&gt;accent_note($min, $d-&gt;triplet_eighth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh, $d-&gt;kick);
+
+      $d-&gt;accent_note($max, $d-&gt;triplet_eighth, $d-&gt;snare);
+      $d-&gt;rest($d-&gt;triplet_eighth);
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh);
+
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh);
+      $d-&gt;accent_note($min, $d-&gt;triplet_eighth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh, $d-&gt;kick);
+  }</code></pre>
+				<h3>
+					<span id="The_Purdie_Shuffle_(Bernard_Purdie)">
+						The Purdie Shuffle (Bernard Purdie)
+					</span>
+				</h3>
+				<pre><code>  my $accent = 30;
+
+  for my $n (1 .. $d-&gt;bars) {
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh, $d-&gt;kick);
+      $d-&gt;accent_note($accent, $d-&gt;triplet_eighth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh);
+
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh);
+      $d-&gt;accent_note($accent, $d-&gt;triplet_eighth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh, $d-&gt;kick);
+
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh, $d-&gt;snare);
+      $d-&gt;accent_note($accent, $d-&gt;triplet_eighth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh);
+
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh);
+      $d-&gt;accent_note($accent, $d-&gt;triplet_eighth, $d-&gt;snare);
+      $d-&gt;note($d-&gt;triplet_eighth, $d-&gt;closed_hh, $d-&gt;kick);
+  }</code></pre>
+				<h3>
+					<span id="The_Black_Page_(Frank_Zappa)">
+						The Black Page (Frank Zappa)
+					</span>
+				</h3>
+				<p>
+					This is an exercise for the reader. It is one of the most advanced grooves ever. It makes use of a number of "tuplets". For instance: a half note triplet duration with groups of 5 notes for quarter notes within. Oof!
+				</p>
+				<p>
+					Please see this
+					<a class="podlinkurl" href="https://github.com/ology/MIDI-Drummer-Tiny/blob/master/eg/black-page">long program</a>
+					, which is in the
+					<em>
+						eg/
+					</em>
+					directory of this distribution.
+				</p>
+				<h2>
+					<span id="Utility_Method">
+						Utility Method
+					</span>
+				</h2>
+				<h3>
+					<span id="sync()">
+						sync()
+					</span>
+				</h3>
+				<p>
+					This method is identical to the MIDI score method. It's just a convenient wrapper for the drummer, as shown below.
+				</p>
+				<h2>
+					<span id="Beat-string_Patterns">
+						Beat-string Patterns
+					</span>
+				</h2>
+				<h3>
+					<span id="pattern()">
+						pattern()
+					</span>
+				</h3>
+				<p>
+					If bit-strings are considered to be beats (
+					<code>
+						1
+					</code>
+					for a note-on strike and
+					<code>
+						0
+					</code>
+					for no strike), then we shall call them "beat-strings." :)
+				</p>
+				<pre><code>  $d-&gt;pattern(
+      patterns   =&gt; [qw( 0101 0101 0110 0110 )],
+      instrument =&gt; $d-&gt;snare,
+      %options,
+  );</code></pre>
+				<p>
+					The options and their defaults are the following:
+				</p>
+				<pre><code>  duration: quarter-note
+  beats:    given by constructor
+  repeat:   1
+  negate:   0 (flip the bit values)
+  vary:     {
+      0 =&gt; sub { $self-&gt;rest( $args{duration} ) },
+      1 =&gt; sub { $self-&gt;note( $args{duration}, $args{instrument} ) },
+  }</code></pre>
+				<p>
+					Those are all fairly obvious except for the last "vary" option. This defines what to do (or not do) given the digit of the beat-string. For
+					<code>
+						0
+					</code>
+					, we rest - for the given (or default) duration. For
+					<code>
+						1
+					</code>
+					, we add a note to the score.
+				</p>
+				<p>
+					This "vary" option can be made up on the fly, by the caller. We can therefore provide different behaviors to perform, when this method is called.
+				</p>
+				<p>
+					Now the string doesn't need to contain only ones and zeros! The string could have a
+					<code>
+						2
+					</code>
+					in it! The "vary" would then need to contain a
+					<code>
+						2
+					</code>
+					key, with instructions for what to do - like roll, possibly.
+				</p>
+				<h3>
+					<span id="sync_patterns()">
+						sync_patterns()
+					</span>
+				</h3>
+				<p>
+					Ok. That's fine for a single voice. But more often we want to multitrack different parts simultaneously? Enter the
+					<code>
+						sync_patterns
+					</code>
+					method.
+				</p>
+				<pre><code>  $d-&gt;sync_patterns(
+      $d-&gt;open_hh =&gt; [ '11111111') ],
+      $d-&gt;snare   =&gt; [ '0101' ],
+      $d-&gt;kick    =&gt; [ '1010' ],
+  ) for 1 .. $d-&gt;bars;</code></pre>
+				<p>
+					The hi-hat is 8 beats long. The kick and snare are 4 beats each. This means that the kick and snare are quarter notes, and the hi-hat will be treated as eighth notes, because a "common multiple" is computed.
+				</p>
+				<h3>
+					<span id="sync()_Revisited">
+						sync() Revisited
+					</span>
+				</h3>
+				<p>
+					For finer-grain control, you should use the above
+					<code>
+						pattern
+					</code>
+					method combined with the
+					<code>
+						sync
+					</code>
+					method:
+				</p>
+				<pre><code>  $d-&gt;sync(
+    sub { $d-&gt;pattern(
+        instrument =&gt; $d-&gt;closed_hh,
+        patterns   =&gt; [ '11111111' ]
+    )},
+    sub { $d-&gt;pattern(
+        instrument =&gt; $d-&gt;snare,
+        patterns   =&gt; [ $my_pattern-&gt;($snare_onset, 16) ]
+    )},
+    sub { $d-&gt;pattern(
+        instrument =&gt; $d-&gt;kick,
+        patterns   =&gt; [ $my_pattern-&gt;($kick_onset, 16) ]
+    )},
+  ) for 1 .. $d-&gt;bars - 1;</code></pre>
+				<p>
+					Why
+					<code>
+						bars - 1
+					</code>
+					? Because next up is a one measure fill!
+				</p>
+				<p>
+					What is
+					<code>
+						my_pattern
+					</code>
+					? That is an imaginary routine that takes a number of onsets and a total number of beats; much like the
+					<code>
+						euclid
+					</code>
+					function in the
+					<a class="podlinkurl" href="https://metacpan.org/pod/Music::CreatingRhythms">CreatingRhythms</a>
+					module. Hint hint. ;)
+				</p>
+				<h2>
+					<span id="Fills">
+						Fills
+					</span>
+				</h2>
+				<p>
+					This is a work in progress, and is tricky to get right... It uses beat-stings:
+				</p>
+				<pre><code>  $d-&gt;add_fill(
+      sub { # this is the fill itself
+          my $self = shift;
+          return {
+            duration         =&gt; 16, # a 16-beat fill
+            $self-&gt;closed_hh =&gt; '00000000',
+            $self-&gt;snare     =&gt; '11111111',
+            $self-&gt;kick      =&gt; '10001000',
+          };
+      },
+      # the phrase to play before the fill
+      $d-&gt;closed_hh =&gt; [ '11111111' ],
+      $d-&gt;snare     =&gt; [ '0101' ],
+      $d-&gt;kick      =&gt; [ '1010' ],
+  );</code></pre>
 				<h2>
 					<span id="Copyright_and_License">
 						Copyright and License

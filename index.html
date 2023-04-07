@@ -5,7 +5,7 @@
 		<title>
 			MIDI-Drummer-Tiny: Glorified metronome
 		</title>
-		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680846217" rel="stylesheet" />
+		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680853566" rel="stylesheet" />
 		<link href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css" rel="stylesheet" />
 	</head>
 	<body class="homepage from-markdown" id="top">
@@ -154,7 +154,7 @@
 								<h3>
 									Alternate kick and snare in 4/4
 								</h3>
-								<pre><code>use MIDI::Drummer::Tiny;
+								<pre><code>use MIDI::Drummer::Tiny ();
 
 my $d = MIDI::Drummer::Tiny-&gt;new;
 
@@ -167,7 +167,7 @@ $d-&gt;write;</code></pre>
 								<h3>
 									Same thing but with beat-strings
 								</h3>
-								<pre><code>use MIDI::Drummer::Tiny;
+								<pre><code>use MIDI::Drummer::Tiny ();
 
 my $d = MIDI::Drummer::Tiny-&gt;new;
 
@@ -186,9 +186,9 @@ $d-&gt;write;</code></pre>
 					<div class="container">
 						<div class="row">
 							<div class="col-12 col-lg-6">
-								<h2 class="display-1">
+								<h3 class="display-1">
 									Download
-								</h2>
+								</h3>
 								<p>
 									<a class="btn btn-primary btn-lg" href="https://metacpan.org/dist/MIDI-Drummer-Tiny">
 										<i class="fa-solid fa-download"></i>
