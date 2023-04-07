@@ -5,7 +5,7 @@
 		<title>
 			MIDI-Drummer-Tiny — Quick-start
 		</title>
-		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680842280" rel="stylesheet" />
+		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680846217" rel="stylesheet" />
 		<link href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css" rel="stylesheet" />
 	</head>
 	<body class="page from-pod" id="top">
@@ -66,7 +66,7 @@
 					</span>
 				</h2>
 				<p>
-					version 0.4203
+					version 0.4204
 				</p>
 				<h2>
 					<span id="Import_the_Module">
@@ -213,9 +213,7 @@
 						Disco
 					</span>
 				</h3>
-				<pre><code>  my $i = 0;
-
-  for my $n ( 0 .. $d-&gt;bars - 1 ) {
+				<pre><code>  for my $n ( 0 .. $d-&gt;bars - 1 ) {
       $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh, $d-&gt;kick );
       $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh );
       $d-&gt;note( $d-&gt;sixteenth, $d-&gt;closed_hh );
@@ -237,6 +235,22 @@
 					We need to write-out the score to a MIDI file.
 				</p>
 				<pre><code>  $d-&gt;write;</code></pre>
+				<h2>
+					<span id="MIDI_Playback">
+						MIDI Playback
+					</span>
+				</h2>
+				<p>
+					Use the venerable command-line program,
+					<a class="podlinkurl" href="https://timidity.sourceforge.net/|">timidity++</a>
+					- which is likely available through your package manager (e.g. apt, homebrew). You can also use the excellent, cross platform program,
+					<a class="podlinkurl" href="https://www.videolan.org/vlc/|">VLC</a>
+					.
+				</p>
+				<pre><code>  &gt; timidity drums.mid</code></pre>
+				<p>
+					Easy!
+				</p>
 				<h2>
 					<span id="Copyright_and_License">
 						Copyright and License

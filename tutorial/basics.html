@@ -5,7 +5,7 @@
 		<title>
 			MIDI-Drummer-Tiny — Basics
 		</title>
-		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680842280" rel="stylesheet" />
+		<link href="https://ology.github.io/midi-drummer-tiny-tutorial/assets/styles/main.css?v=1680846217" rel="stylesheet" />
 		<link href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css" rel="stylesheet" />
 	</head>
 	<body class="page from-pod" id="top">
@@ -66,18 +66,135 @@
 					</span>
 				</h2>
 				<p>
-					version 0.4203
+					version 0.4204
 				</p>
 				<h2>
-					<span id="Tbd...">
-						Tbd...
+					<span id="Methods_and_Techniques">
+						Methods and Techniques
 					</span>
 				</h2>
 				<h3>
-					<span id="TBD...">
-						TBD...
+					<span id="Counting-in">
+						Counting-in
 					</span>
 				</h3>
+				<p>
+					Four beats in 4/4:
+				</p>
+				<pre><code>  $d-&gt;count_in(1);  # Closed hi-hat for 1 bar</code></pre>
+				<p>
+					A steady, traditional metronome pulse:
+				</p>
+				<pre><code>  $d-&gt;count_in({ bars =&gt; 32, patch =&gt; $d-&gt;bell });</code></pre>
+				<h3>
+					<span id="Of_Rests,_Notes,_and_Accents">
+						Of Rests, Notes, and Accents
+					</span>
+				</h3>
+				<p>
+					Add a single quarter-note with both the closed hihat and the bass drum, to the score:
+				</p>
+				<pre><code>  $d-&gt;note($d-&gt;quarter, $d-&gt;closed_hh, $d-&gt;kick);</code></pre>
+				<p>
+					Rest for a whole note:
+				</p>
+				<pre><code>  $d-&gt;rest($d-&gt;whole);</code></pre>
+				<p>
+					Add an accented snare to the score:
+				</p>
+				<pre><code>  my $accent_value = 127;
+  $d-&gt;accent_note($accent_value, $d-&gt;sixteenth, $d-&gt;snare);</code></pre>
+				<p>
+					Do the opposite and add a "ghost note" that is less than the average volume (usually 100), to the score:
+				</p>
+				<pre><code>  my $accent_value = 50;
+  $d-&gt;accent_note($accent_value, $d-&gt;sixteenth, $d-&gt;snare);</code></pre>
+				<h2>
+					<span id="A_Flam">
+						A Flam
+					</span>
+				</h2>
+				<p>
+					A "flam" is a stroke preceded by a grace note. Often this is done with the snare alone, but any part of the kit is fair game.
+				</p>
+				<pre><code>  $d-&gt;flam($d-&gt;quarter); # play the snare by default</code></pre>
+				<p>
+					Play the the hi-tom for the grace-note, then the snare:
+				</p>
+				<pre><code>  $d-&gt;flam($d-&gt;eighth, $d-&gt;hi_tom);</code></pre>
+				<p>
+					Again, play the the hi-tom for the grace-note, followed by the low-tom:
+				</p>
+				<pre><code>  $d-&gt;flam($d-&gt;sixteenth, $d-&gt;hi_tom, $d-&gt;low_tom);</code></pre>
+				<h2>
+					<span id="Rolls">
+						Rolls
+					</span>
+				</h2>
+				<p>
+					A drum roll is a rapid succession of beats, usually on the same drum.
+				</p>
+				<p>
+					This module does two types: "straight" and "curved" - i.e. flat or with a crescendo.
+				</p>
+				<h3>
+					<span id="Straight">
+						Straight
+					</span>
+				</h3>
+				<p>
+					Roll the snare in 32nd notes for an eighth-note duration, with equal volume for each stroke:
+				</p>
+				<pre><code>  $d-&gt;roll($d-&gt;eighth, $d-&gt;thirtysecond);</code></pre>
+				<p>
+					Roll the hi-tom in 32nd notes for an quarter-note duration:
+				</p>
+				<pre><code>  $d-&gt;roll($d-&gt;quarter, $d-&gt;thirtysecond, $d-&gt;hi_tom);</code></pre>
+				<h3>
+					<span id="Crescendo">
+						Crescendo
+					</span>
+				</h3>
+				<p>
+					Roll the snare from a volume of 50 up to 127 in a linear fashion:
+				</p>
+				<pre><code>  $d-&gt;crescendo_roll([50, 127], $d-&gt;eighth, $d-&gt;thirtysecond);</code></pre>
+				<p>
+					Roll the snare from a volume of 50
+					<b>
+						up
+					</b>
+					to 127 with a curve (as illustrated in the main module's documentation):
+				</p>
+				<pre><code>  $d-&gt;crescendo_roll([50, 127, 1], $d-&gt;eighth, $d-&gt;thirtysecond);</code></pre>
+				<p>
+					Roll the hi-tom from a volume of 127
+					<b>
+						down
+					</b>
+					to 50:
+				</p>
+				<pre><code>  $d-&gt;crescendo_roll([127, 50], $d-&gt;eighth, $d-&gt;thirtysecond, $d-&gt;hi_tom);</code></pre>
+				<h2>
+					<span id="Changing_Attribute_Values">
+						Changing Attribute Values
+					</span>
+				</h2>
+				<p>
+					A few of the attributes may be reset in the middle of a piece (after object construction).
+				</p>
+				<p>
+					These are the time signature, beats per minute, MIDI channel, and the volume.
+				</p>
+				<pre><code>  $d-&gt;set_time_sig('5/4');
+
+  $d-&gt;set_bpm($d-&gt;bpm / 3);
+
+  $d-&gt;set_channel;    # reset to channel 9 (the drum channel)
+  $d-&gt;set_channel(0); # set the channel to something else
+
+  $d-&gt;set_volume;      # set to 0 - mute
+  $d-&gt;set_volume(127); # or any number up to 127</code></pre>
 				<h2>
 					<span id="Copyright_and_License">
 						Copyright and License
